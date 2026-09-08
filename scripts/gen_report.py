@@ -60,6 +60,11 @@ def render(by_module: dict) -> str:
 
 if __name__ == "__main__":
     junit, out = sys.argv[1], sys.argv[2]
+    if not Path(junit).exists():
+        Path(out).write_text(
+            "# 测试报告\n\n- 测试未执行或 junit 结果文件缺失\n", encoding="utf-8"
+        )
+        sys.exit(0)
     report = render(parse(junit))
     Path(out).write_text(report, encoding="utf-8")
     print(report)

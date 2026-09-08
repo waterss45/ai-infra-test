@@ -7,6 +7,7 @@
 再解释执行。测试保证优化前后语义等价（见 tests/test_compiler/）。
 """
 import copy
+
 import numpy as np
 
 from sut.operators import conv2d, relu
