@@ -50,7 +50,7 @@ def conv2d(
         raise ValueError(f"输入必须 4D (N,C,H,W), got {x.shape}")
     if weight.ndim != 4:
         raise ValueError(f"权重必须 4D (F,C,KH,KW), got {weight.shape}")
-    n, c_in, h, w = x.shape
+    n, c_in, _, _ = x.shape
     f, c_w, kh, kw = weight.shape
     if c_in != c_w:
         raise ValueError(f"通道数不匹配: input {c_in} vs weight {c_w}")

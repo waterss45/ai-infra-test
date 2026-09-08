@@ -7,7 +7,6 @@ import ctypes
 import numpy as np
 import pytest
 
-from tests.core.native_loader import native_lib  # noqa: F401
 from tests.core.numeric import assert_allclose
 
 pytestmark = pytest.mark.native

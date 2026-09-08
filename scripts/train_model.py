@@ -5,7 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 from sut.tiny_model import SEED, TinyCNN, make_synthetic_dataset
 

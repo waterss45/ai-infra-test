@@ -4,7 +4,7 @@
 训练脚本 scripts/train_model.py 产出 artifacts/tiny_cnn.pt。
 """
 import torch
-import torch.nn as nn
+from torch import nn
 
 NUM_CLASSES = 5
 IMG_SIZE = 8

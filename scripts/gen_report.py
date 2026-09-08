@@ -41,8 +41,10 @@ def render(by_module: dict) -> str:
         "# 测试报告",
         "",
         f"- 生成时间: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}",
-        f"- 结论: {'✅ 通过' if failed == 0 else '❌ 存在失败'}"
-        f"（通过 {passed} / 失败 {failed} / 跳过 {skipped}，合计 {total}，耗时 {duration:.1f}s）",
+        (
+            f"- 结论: {'✅ 通过' if failed == 0 else '❌ 存在失败'}"
+            f"（通过 {passed} / 失败 {failed} / 跳过 {skipped}，合计 {total}，耗时 {duration:.1f}s）"
+        ),
         "",
         "| 模块 | 用例数 | 通过 | 失败 | 跳过 | 耗时(s) |",
         "|---|---|---|---|---|---|",

@@ -5,7 +5,6 @@
 import numpy as np
 import pytest
 import torch
-import yaml
 
 from sut.operators import conv2d
 from tests.core.numeric import assert_allclose

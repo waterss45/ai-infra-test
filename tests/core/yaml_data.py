@@ -10,7 +10,7 @@ def load_yaml_cases(file_name: str) -> list[dict]:
     with open(DATA_DIR / file_name, encoding="utf-8") as f:
         data = yaml.safe_load(f)
     if not isinstance(data, list):
-        raise ValueError(f"用例文件 {file_name} 顶层必须为数组")
+        raise TypeError(f"用例文件 {file_name} 顶层必须为数组")
     return data
 
 

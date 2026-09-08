@@ -4,7 +4,6 @@ import pytest
 from sut.scheduler import (
     CycleError,
     MissingDependencyError,
-    Schedule,
     SchedulerError,
     Task,
     UnschedulableError,

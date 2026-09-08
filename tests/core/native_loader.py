@@ -1,6 +1,5 @@
 """原生 C++ kernel 加载器：未构建则跳过（Linux CI 会构建）。"""
 import ctypes
-import sys
 from pathlib import Path
 
 import pytest
