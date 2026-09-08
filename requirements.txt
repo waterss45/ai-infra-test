@@ -1,0 +1,8 @@
+# 先安装 CPU 版 torch（CI 中：pip install torch --index-url https://download.pytorch.org/whl/cpu）
+torch>=2.2
+onnx>=1.16
+onnxruntime>=1.18
+numpy>=1.26
+pyyaml>=6.0
+pytest>=8.3
+ruff>=0.6

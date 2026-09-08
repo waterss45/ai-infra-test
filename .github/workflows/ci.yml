@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 安装 CPU 版 torch
+        run: pip install torch --index-url https://download.pytorch.org/whl/cpu
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 构建 C++ 原生 kernel
+        run: bash scripts/build_native.sh
+
+      - name: 静态检查
+        run: ruff check sut tests scripts
+
+      - name: 全量测试
+        run: python -m pytest tests -v --junitxml=reports/junit.xml --maxfail=10
+
+      - name: 生成测试报告
+        if: always()
+        run: python scripts/gen_report.py reports/junit.xml docs/test-report.md
+
+      - name: 输出报告摘要
+        if: always()
+        run: cat docs/test-report.md >> $GITHUB_STEP_SUMMARY
+
+      - name: 上传测试报告
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-reports
+          path: |
+            reports/junit.xml
+            docs/test-report.md
+          retention-days: 14

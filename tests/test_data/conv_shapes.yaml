@@ -1,0 +1,72 @@
+# conv2d 形状矩阵：数据驱动用例（等价类 + 边界值）
+- id: basic_3x3
+  n: 2
+  c_in: 3
+  h: 8
+  w: 8
+  f: 4
+  kh: 3
+  kw: 3
+  stride: 1
+  padding: 1
+  expect_code: 200
+
+- id: stride2_same_padding
+  n: 1
+  c_in: 1
+  h: 8
+  w: 8
+  f: 8
+  kh: 3
+  kw: 3
+  stride: 2
+  padding: 1
+  expect_code: 200
+
+- id: no_padding_valid
+  n: 2
+  c_in: 2
+  h: 5
+  w: 6
+  f: 3
+  kh: 2
+  kw: 2
+  stride: 1
+  padding: 0
+  expect_code: 200
+
+- id: kernel_1x1
+  n: 1
+  c_in: 3
+  h: 4
+  w: 4
+  f: 2
+  kh: 1
+  kw: 1
+  stride: 1
+  padding: 0
+  expect_code: 200
+
+- id: boundary_min_spatial
+  n: 1
+  c_in: 1
+  h: 1
+  w: 1
+  f: 1
+  kh: 1
+  kw: 1
+  stride: 1
+  padding: 0
+  expect_code: 200
+
+- id: kernel_larger_than_input
+  n: 1
+  c_in: 1
+  h: 3
+  w: 3
+  f: 1
+  kh: 5
+  kw: 5
+  stride: 1
+  padding: 0
+  expect_code: 400
